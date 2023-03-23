@@ -172,10 +172,14 @@ session_start();
         document.getElementById("psw-double-check").style.display = "none";
 
         password.onfocus = function() {
-                document.getElementById("psw-check").style.display = "block";
-            }
+            document.getElementById("psw-check").style.display = "block";
+        }
+
+        password.onfocusout = function() {
+            document.getElementById("psw-check").style.display = "none";
+        }
         
-            password.onkeyup = function() {
+        password.onkeyup = function() {
             // Validate lowercase letters
             const lowerCaseLetters = /[a-z]/g;
             if(password.value.match(lowerCaseLetters)) {
@@ -205,11 +209,13 @@ session_start();
         }
 
         confPassword.onfocus = function() {
-                document.getElementById("psw-double-check").style.display = "block";
-            }
+            document.getElementById("psw-double-check").style.display = "block";
+        }
+        confPassword.onfocusout = function() {
+            document.getElementById("psw-double-check").style.display = "none";
+        }
 
         confPassword.onkeyup = function() {
-            // Validate vales
             if(password.value === confPassword.value) {
                 console.log(true);
                 identical.classList.remove("pw-invalid");
