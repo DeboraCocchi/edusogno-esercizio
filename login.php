@@ -102,7 +102,7 @@ session_destroy();
                         Inserisci la password
                     </label>
                     <div class="input-field">
-                        <input type="password" name="userpassword" placeholder="Scrivila qui" id="password" required>
+                        <input type="password" name="userpassword" placeholder="Scrivila qui" id="password" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                         <span class="focus-border"></span>
                         <i class="fa-solid fa-eye-slash" id="toggle-pw"></i>
                     </div>            

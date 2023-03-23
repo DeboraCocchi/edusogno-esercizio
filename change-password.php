@@ -90,7 +90,7 @@ session_start();
                         Scegli una nuova password
                     </label>
                     <div class="input-field">
-                      <input type="password" name="new-pw" placeholder="Inserisci una nuova password" id="new-pw" required>
+                      <input type="password" name="new-pw" placeholder="Inserisci una nuova password" id="new-pw" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                       <span class="focus-border"></span>
                       <i class="fa-solid fa-eye-slash" id="toggle-pw"></i>
                     </div>
@@ -98,7 +98,7 @@ session_start();
                         Conferma password
                     </label>
                     <div class="input-field">
-                      <input type="password" name="confirm-pw" placeholder="Conferma password" id="confirm-pw" required>
+                      <input type="password" name="confirm-pw" placeholder="Conferma password" id="confirm-pw" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                       <span class="focus-border"></span>
                       <i class="fa-solid fa-eye-slash" id="confirm-toggle-pw"></i>
                     </div>             
