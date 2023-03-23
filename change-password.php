@@ -47,6 +47,19 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Edusogno</title>
+    <style>
+    .pw-invalid{
+        color:red;
+        }
+
+    .pw-valid{
+        color:green;
+        }
+    .blue{
+        color: #0057FF;
+    }
+
+    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
@@ -93,6 +106,11 @@ session_start();
                       <input type="password" name="new-pw" placeholder="Inserisci una nuova password" id="new-pw" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                       <span class="focus-border"></span>
                       <i class="fa-solid fa-eye-slash" id="toggle-pw"></i>
+                      <div style="font-size: 0.8rem;line-height:0.7rem;text-align: start;" class="blue" id="psw-check" >La password deve contenere almeno
+                            <span class="pw-invalid" id="chars">8 caratteri</span>
+                            tra cui almeno
+                            <span class="pw-invalid" id="low-letters">una lettera minuscola</span> e <span class="pw-invalid" id="cap-letters">una maiuscola</span>.
+                        </div>
                     </div>
                     <label for="confirm-pw">
                         Conferma password
@@ -101,6 +119,8 @@ session_start();
                       <input type="password" name="confirm-pw" placeholder="Conferma password" id="confirm-pw" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                       <span class="focus-border"></span>
                       <i class="fa-solid fa-eye-slash" id="confirm-toggle-pw"></i>
+                      <div style="font-size: 0.8rem;line-height:0.7rem;text-align: start;" class="blue" id="psw-double-check">Le password
+                            <span class="pw-invalid" id="identical">devono coincidere.</span></div>
                     </div>             
                     <input type="submit" id="button-l" value="CONFERMA NUOVA PASSWORD">
                    
@@ -144,6 +164,61 @@ session_start();
                 this.classList.add('fa-eye-slash');
             }
         })
+
+        const lowLetters=document.getElementById('low-letters')
+        const capLetters=document.getElementById('cap-letters')
+        const chars=document.getElementById('chars')
+        document.getElementById("psw-check").style.display = "none";
+        document.getElementById("psw-double-check").style.display = "none";
+
+        password.onfocus = function() {
+                document.getElementById("psw-check").style.display = "block";
+            }
+        
+            password.onkeyup = function() {
+            // Validate lowercase letters
+            const lowerCaseLetters = /[a-z]/g;
+            if(password.value.match(lowerCaseLetters)) {
+                lowLetters.classList.remove("pw-invalid");
+                lowLetters.classList.add("pw-valid");
+            } else {
+                lowLetters.classList.remove("pw-valid");
+                lowLetters.classList.add("pw-invalid");
+            }
+
+            const upperCaseLetters = /[A-Z]/g;
+            if(password.value.match(upperCaseLetters)) {
+                capLetters.classList.remove("pw-invalid");
+                capLetters.classList.add("pw-valid");
+            } else {
+                capLetters.classList.remove("pw-valid");
+                capLetters.classList.add("pw-invalid");
+            }
+
+            if(password.value.length >= 8) {
+                chars.classList.remove("pw-invalid");
+                chars.classList.add("pw-valid");
+            } else {
+                chars.classList.remove("pw-valid");
+                chars.classList.add("invalid");
+            }
+        }
+
+        confPassword.onfocus = function() {
+                document.getElementById("psw-double-check").style.display = "block";
+            }
+
+        confPassword.onkeyup = function() {
+            // Validate vales
+            if(password.value === confPassword.value) {
+                console.log(true);
+                identical.classList.remove("pw-invalid");
+                identical.classList.add("pw-valid");
+            } else {
+                identical.classList.add("pw-invalid");
+                identical.classList.remove("pw-valid");
+            }
+        }
       
     });
 </script>
