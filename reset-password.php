@@ -1,7 +1,6 @@
 <?php
 session_start();
 // UTILIZZO DI PHPMAILER E MAILTRAP
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -34,7 +33,7 @@ if(!empty($usermailfield) && mysqli_num_rows($result)==0){
             'allow_self_signed' => true
             )
             ); 
-        $mail->SMTPDebug = 2;                                        
+        // $mail->SMTPDebug = 2;                                        
         $mail->Host       = 'sandbox.smtp.mailtrap.io';              
         $mail->SMTPAuth   = true;                 
         $mail->Username   = '6b4d204ca14e38';      
