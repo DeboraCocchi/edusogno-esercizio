@@ -66,7 +66,7 @@
         <div class="container">
             
             <h2>
-            Ciao <?php echo strtoupper($user_data['nome']) ;?>&nbsp;<?php echo strtoupper($user_data['cognome']) ;?> ecco i tuoi eventi
+            Ciao <?php echo strtoupper($user_data['nome']) ;?>&nbsp;<?php echo strtoupper($user_data['cognome']) ;?>, ecco i tuoi eventi
             </h2>
             
                 <div class="events-container">

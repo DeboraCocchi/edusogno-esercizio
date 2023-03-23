@@ -97,7 +97,7 @@ if(!empty($usermailfield) && mysqli_num_rows($result)==0){
     <main>
         <div class="container">
             <h2>
-                Modifica password
+                Richiedi una nuova password
             </h2>
             <div class="form-container">
             <?php if($_SESSION['message']):?>
