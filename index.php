@@ -17,12 +17,10 @@
         //     echo 'errore';
         // }
     
-    // $query= "SELECT * FROM eventi";
     $usermail=$user_data['email'];
     $query= "SELECT * FROM eventi WHERE attendees LIKE '%$usermail%'";
     $return=mysqli_query($conn, $query);
     $events=mysqli_fetch_all($return);
-    // dump($user_data['email']);
 
 
 ?>
